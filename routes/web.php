@@ -15,7 +15,7 @@
 //     return view('welcome');
 // });
 
-Route::get('/', 'UsersController@index')->name('Index');
+Route::get('/', 'UsersController@index');
 
 Auth::routes();
 
