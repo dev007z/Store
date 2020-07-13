@@ -89,8 +89,27 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="col-lg-2">
-                           
+                        <div class="col-lg-8">
+                           <form class="form-horizontal" method="POST" action="">
+                                <div class="form-group row">
+                                    <div class="col-lg-6">
+                                        <input list="locations" name="location" id="location" class="form-control" placeholder="Select Location">
+                                        <datalist id="locations">
+                                            <option value="Abaji">
+                                            <option value="Apo">
+                                            <option value="Area 1"> 
+                                            <option value="Garki">   
+                                            <option value="Gwagwalada">
+                                            <option value="Gwarimpa">
+                                            <option value="Maitama">
+                                            <option value="Wuse">
+                                        </datalist>
+                                    </div>
+                                    <div class="col-lg-4">
+
+                                    </div>
+                                </div>
+                           </form>
                         </div>
                     </div>
                 </div>
