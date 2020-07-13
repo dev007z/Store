@@ -79,7 +79,14 @@
                     <div class="row">
                         <div class="col-lg-4">
                             <form class="form-horizontal" method="POST" action="">
-                                
+                                <div class="form-group row">
+                                    <div class="col-8">
+                                        <input type="text" name="searchProduct" class="form-control" placeholder="Search Product">
+                                    </div>
+                                    <div class="col-4">
+                                        <input type="submit" name="" value="Search" class="btn btn-default">
+                                    </div>
+                                </div>
                             </form>
                         </div>
                         <div class="col-lg-2">
