@@ -92,8 +92,8 @@
                        <form class="form-horizontal" method="POST" action="">
                             <div class="form-group row">
                                 <div class="col-lg-6">
-                                    <input list="locations" name="location" id="location" class="form-control" placeholder="Select Location">
-                                    <datalist id="locations">
+                                    <input list="states" name="state" id="state" class="form-control" placeholder="Select State">
+                                    <datalist id="states">
                                             <option value="Abaji">
                                             <option value="Apo">
                                             <option value="Area 1"> 
