@@ -23,16 +23,16 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light shadow-sm bg-primary">
             <div class="container">
-                <div class="col-lg-2">
+                <div class="col-lg-5">
                     <div class="row">
                         <ul class="navbar-nav mr-auto">
                             <a class="navbar-brand text-white" href="{{ url('/') }}">
                                 Laravel Store
                             </a>
                             
-                            <button class="navbar-toggler float-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                            {{-- <button class="navbar-toggler float-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                                 <span class="navbar-toggler-icon"></span>
-                            </button>
+                            </button> --}}
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                 <!-- Left Side Of Navbar -->
                         </ul>
@@ -67,7 +67,7 @@
                                 </li>
                             @endguest
                             <li>
-                                <a href="" class="text-white nav-link">Add Post</a>
+                                <a href="" class="text-white nav-link ">Add Product</a>
                             </li>
                         </ul>
                     </div>
