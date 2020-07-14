@@ -92,21 +92,11 @@
                        <form class="form-horizontal" method="POST" action="">
                             <div class="form-group row">
                                 <div class="col-lg-6">
-                                    <input list="states" name="state" id="state" class="form-control" placeholder="Select State">
-                                    <datalist id="states">
-                                            <option value="Abaji">
-                                            <option value="Apo">
-                                            <option value="Area 1"> 
-                                            <option value="Garki">   
-                                            <option value="Gwagwalada">
-                                            <option value="Gwarimpa">
-                                            <option value="Maitama">
-                                            <option value="Wuse">
-                                        </datalist>
+                                    <input type="text" name="state" id="state" class="form-control" placeholder="Select State">
                                 </div>
                                 <div class="col-lg-4">
                                     <select class="form-control dropdown categories" id="categories">
-                                        
+                                        <option class="disabled">Select Category</option>
                                     </select>
                                 </div>
                                 <div class="col-lg-2">
