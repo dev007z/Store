@@ -94,6 +94,9 @@
                             <div class="form-group row">
                                 <div class="col-lg-6">
                                     <input type="text" name="state" id="state" class="form-control" placeholder="Select State">
+                                    <div id="stateList">
+
+                                    </div>
                                 </div>
                                 <div class="col-lg-4">
                                     <select class="form-control dropdown categories" id="categories">
@@ -131,13 +134,15 @@
                     method: "POST",
                     data: {nigerianStates: nigerianStates, _token: _token},
                     success: function(data){
-                        alert(data);
+                        $('#stateList').fadeIn();
+                        $('#stateList').html(data);
                     }
                 });
 
             }
             else{
-                console.log("error!");
+                $('#stateList').fadeOut();
+                $('#stateList').html(data);
             }
         });
     });
