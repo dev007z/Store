@@ -14,6 +14,7 @@ class UsersController extends Controller
     }
 
     public function fetch(Request $request){
+        // get the states from database and return to ajax in app.blade.php
         if ($request->get('nigerianStates')) {
             $query = $request->get('nigerianStates');
             $data = DB::table('locations')
@@ -22,7 +23,7 @@ class UsersController extends Controller
             $output = '<ul style="display: block !important; " class="dropdown-menu">';
             if ($data->count()>0) {
                 foreach ($data as $row) {
-                    $output .= '<li class="dropdown-item-text">' .$row->State_name. '</li>';
+                    $output .= '<li class="dropdown-item-text searchState" id="search" style="cursor: pointer;" name="searchState" value='.$row->id. '>' .$row->State_name. '</li>';
                 }
                 $output .= '</ul>';
                 echo $output;

@@ -129,6 +129,7 @@
             var nigerianStates = $(this).val();
             if (nigerianStates != null) {
                 var _token = $('input[name="_token"]').val();
+                // get list of locations matching the input in the search locations input on nav bar through AJAX
                 $.ajax({
                     url: "{{ route('searchLocation.fetch') }}",
                     method: "POST",
@@ -144,6 +145,11 @@
                 $('#stateList').fadeOut();
                 $('#stateList').html(data);
             }
+        });
+        // display the selected state from drop down list in the text field with given id and fade out the list on click
+        $(document).on('click', '#search', function() {
+            $('#state').val($(this).text());
+            $('#stateList').fadeOut();
         });
     });
 </script>
