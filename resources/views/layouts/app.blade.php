@@ -29,7 +29,7 @@
                             <a class="navbar-brand text-white" href="{{ url('/') }}">
                                 Laravel Store
                             </a>
-                            
+
                             {{-- <button class="navbar-toggler float-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                                 <span class="navbar-toggler-icon"></span>
                             </button> --}}
@@ -122,12 +122,28 @@
 <script type="text/javascript">
     $(document).ready(function(){
         $('#state').keyup(function(){
-            alert("Hello");
+            var data;
+            var nigerianStates = $(this).val();
+            if (nigerianStates != null) {
+                var _token = $('input[name="_token"]').val();
+                $.ajax({
+                    url: "{{ route('searchLocation.fetch') }}",
+                    method: "POST",
+                    data: {nigerianStates: nigerianStates, _token: _token},
+                    success: function(data){
+                        alert(data);
+                    }
+                });
+
+            }
+            else{
+                console.log("error!");
+            }
         });
     });
 </script>
 
-{{-- JQuery CDN 
+{{-- JQuery CDN
     <script
   src="https://code.jquery.com/jquery-3.5.1.min.js"
   integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="

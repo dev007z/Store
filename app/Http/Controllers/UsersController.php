@@ -10,4 +10,13 @@ class UsersController extends Controller
     public function index(){
         return view('users.user');
     }
+-
+    public function fetch(Request $request){
+        if ($request->get('nigerianStates')) {
+            $query = $request->get('nigerianStates');
+            $data = DB::table('states')
+                    ->where('stateName', 'like', '%' . $query . '%')
+                    ->get();
+        }
+    }
 }
