@@ -22,3 +22,6 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::post('UsersController/fetch', 'UsersController@fetch')->name('searchLocation.fetch');
+
+// to display cities after selecting states in navbar
+Route::post('UsersController/cities', 'UsersController@cities')->name('states.cities');

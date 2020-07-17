@@ -93,10 +93,9 @@
                        <form class="form-horizontal" method="POST" action="">
                             <div class="form-group row">
                                 <div class="col-lg-6">
-                                    <input type="text" name="state" id="state" class="form-control" placeholder="Select State">
-                                    <div id="stateList">
-
-                                    </div>
+                                    <input type="text" name="location" id="location" class="form-control" placeholder="Select Location">
+                                    <div id="stateList" class="dropdown"></div>
+                                    <div id="cityList" class="dropdown"></div>
                                 </div>
                                 <div class="col-lg-4">
                                     <select class="form-control dropdown categories" id="categories">
@@ -124,7 +123,7 @@
 <script src="{{ asset('js/jquery.js') }}"></script>
 <script type="text/javascript">
     $(document).ready(function(){
-        $('#state').keyup(function(){
+        $('#location').keyup(function(){
             var data;
             var nigerianStates = $(this).val();
             if (nigerianStates != null) {
@@ -148,9 +147,30 @@
         });
         // display the selected state from drop down list in the text field with given id and fade out the list on click
         $(document).on('click', '#search', function() {
-            $('#state').val($(this).text());
+            $('#location').val($(this).text());
             $('#stateList').fadeOut();
         });
+    });
+
+    $(document).on('click', '#stateList ul li', function(){
+        var state = $('#state').val();
+        var id = $(this).val();
+        var _token = $('input[name="_token"]').val();
+        $.ajax({
+            url: "{{ route('states.cities') }}",
+            method: "POST",
+            data: {id: id, _token: _token},
+            success: function(data){
+                $('#cityList').fadeIn();
+                $('#cityList').html(data);
+            }
+        });
+        // display the selected city from drop down list in the text field with given id and fade out the list on click
+        $(document).on('click', '#searchCity', function() {
+            $('#location').val($(this).text());
+            $('#cityList').fadeOut();
+        });
+
     });
 </script>
 

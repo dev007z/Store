@@ -29,7 +29,27 @@ class UsersController extends Controller
                 echo $output;
             }
             else {
-                $output .= '<li class="dropdown-item-text">Record not found!</li></ul>';
+                $output .= '<li class="dropdown-item-text">Location not found!</li></ul>';
+                echo $output;
+            }
+        }
+    }
+
+    public function cities(Request $request){
+        if ($request->get('id')) {
+            $query = $request->get('id');
+            $data = DB::table('cities')
+                ->where('state_id', '=', $query)
+                ->get();
+            $output = '<ul style="display: block !important; " class="dropdown-menu">';
+            if ($data->count() > 0) {
+                foreach ($data as $row) {
+                    $output .= '<li class="dropdown-item-text" id="searchCity" style="cursor: pointer;" name="searchCity">' .$row->city_name . '</li>';
+                }
+                $output .= '';
+                echo $output;
+            } else {
+                $output .= '<li class="dropdown-item-text">Location not found!</li></ul>';
                 echo $output;
             }
         }
