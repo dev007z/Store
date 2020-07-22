@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "..\\..\\..\\..\\Laravel-Store"
+		},
+		{
+			"path": "..\\..\\.."
+		}
+	],
+	"settings": {
+		"window.titleSeparator": " | "
+	}
+}

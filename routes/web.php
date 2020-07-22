@@ -11,9 +11,9 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('welcome');
+});
 
 Route::get('/', 'UsersController@index');
 
@@ -25,3 +25,7 @@ Route::post('UsersController/fetch', 'UsersController@fetch')->name('searchLocat
 
 // to display cities after selecting states in navbar
 Route::post('UsersController/cities', 'UsersController@cities')->name('states.cities');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
