@@ -97,7 +97,7 @@
                                     <input type="text" name="location" id="location" class="form-control" placeholder="State">
                                     <div id="stateList" class="dropdown"></div>
                                     <div id="cityList" class="dropdown"></div>
-                                    <input type="text" name="city" id="city" class="form-control bg-primary" placeholder="City"/>
+                                    <input type="text" name="city" id="city" class="form-control bg-primary border-0 text-dark"/>
                                 </div>
                                 <div class="col-lg-4">
                                     <select class="form-control dropdown categories" id="categories">
