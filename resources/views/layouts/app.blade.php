@@ -59,7 +59,7 @@
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                                             {{ __('Logout') }}
-                                        </a>
+                                        </a>```
 
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                             @csrf
@@ -94,9 +94,10 @@
                        <form class="form-horizontal" method="POST" action="">
                             <div class="form-group row">
                                 <div class="col-lg-6">
-                                    <input type="text" name="location" id="location" class="form-control" placeholder="Select Location">
+                                    <input type="text" name="location" id="location" class="form-control" placeholder="State">
                                     <div id="stateList" class="dropdown"></div>
                                     <div id="cityList" class="dropdown"></div>
+                                    <input type="text" name="city" id="city" class="form-control bg-primary" placeholder="City"/>
                                 </div>
                                 <div class="col-lg-4">
                                     <select class="form-control dropdown categories" id="categories">
@@ -167,8 +168,10 @@
             }
         });
         // display the selected city from drop down list in the text field with given id and fade out the list on click
-        $(document).on('click', '#searchCity', function() {
-            $('#location').val($(this).text());
+        $(document).on('click', '#cityList', function(e) {
+            var txt = $(e.target).text();
+            $('#city').fadeIn();
+            $('#city').val(txt);
             $('#cityList').fadeOut();
         });
 
