@@ -26,6 +26,9 @@ Route::post('UsersController/fetch', 'UsersController@fetch')->name('searchLocat
 // to display cities after selecting states in navbar
 Route::post('UsersController/cities', 'UsersController@cities')->name('states.cities');
 
+//for fetching main categories & displaying them in dropdown
+Route::post('UsersController/mainCategories', 'UsersController@mainCategories')->name('mainCategories.fetch');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

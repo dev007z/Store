@@ -54,4 +54,17 @@ class UsersController extends Controller
             }
         }
     }
+
+    public function mainCategories(Request $request){
+        $data = DB::table('main_categories')->get();
+        $output = '';
+        if ($data->count() > 0) {
+            foreach ($data as $row) {
+                $output .= '<option value=' . $row->id . '>' . $row->main_category . '</option>';
+            }
+            $output .= '';
+            echo $output;
+        }
+    }
+
 }

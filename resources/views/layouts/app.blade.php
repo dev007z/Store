@@ -21,7 +21,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light shadow-sm bg-primary">
+        <nav class="navbar navbar-expand-md navbar-light shadow-sm bg-danger">
             <div class="container">
                 <div class="col-lg-5">
                     <div class="row">
@@ -97,10 +97,10 @@
                                     <input type="text" name="location" id="location" class="form-control" placeholder="State">
                                     <div id="stateList" class="dropdown"></div>
                                     <div id="cityList" class="dropdown"></div>
-                                    <input type="text" name="city" id="city" class="form-control bg-primary border-0 text-dark"/>
+                                    <input type="text" name="city" id="city" class="form-control border-0 text-light" style="background-color: inherit"/>
                                 </div>
                                 <div class="col-lg-4">
-                                    <select class="form-control dropdown categories" id="categories">
+                                    <select class="form-control dropdown" id="categories">
                                         <option class="disabled">Select Category</option>
                                     </select>
                                 </div>
@@ -175,6 +175,20 @@
             $('#cityList').fadeOut();
         });
 
+    });
+
+    $(document).ready(function(){
+        var _token = $('input[name="_token"]').val();
+        $.ajax({
+            url: "{{ route('mainCategories.fetch') }}",
+            method: "POST",
+            data: {_token: _token},
+            success: function(data){
+                $('#categories').fadeIn();
+                $('#categories').html(data);
+                // alert(data);
+            }
+        });
     });
 </script>
 
