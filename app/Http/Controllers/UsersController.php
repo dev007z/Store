@@ -80,4 +80,7 @@ class UsersController extends Controller
         return view('users.addProduct', ['categories'=>$categories]);
     }
 
+    public function viewProducts(Request $request, $main_category, $id){
+        echo $main_category . '<br/> ' . $id;
+    }
 }

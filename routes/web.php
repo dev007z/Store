@@ -35,3 +35,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 // Add product page
 Route::get('add-product', 'UsersController@addProduct');
+
+// display different views based on category
+Route::get('/products/{main_category}/{id}', 'UsersController@viewProducts');
