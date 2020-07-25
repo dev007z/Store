@@ -5,12 +5,17 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use App\locations;
+use App\MainCategory;
 
 class UsersController extends Controller
 {
     //create function to CALL USERS VIEW
     public function index(){
-        return view('users.user');
+        $categories = DB::table('main_categories')
+                    ->select('main_categories.id', 'main_categories.main_category', 'icons.icons')
+                    ->join('icons', 'icons.id', '=', 'main_categories.id')
+                    ->get();
+        return view('users.user', ['categories'=>$categories]);
     }
 
     public function fetch(Request $request){
