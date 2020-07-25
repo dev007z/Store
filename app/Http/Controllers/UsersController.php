@@ -72,4 +72,12 @@ class UsersController extends Controller
         }
     }
 
+    public function addProduct(){
+        $categories = DB::table('main_categories')
+                    ->select('main_categories.id', 'main_categories.main_category', 'icons.icons')
+                    ->join('icons', 'icons.id', '=', 'main_categories.id')
+                    ->get();
+        return view('users.addProduct', ['categories'=>$categories]);
+    }
+
 }

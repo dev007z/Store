@@ -32,3 +32,6 @@ Route::post('UsersController/mainCategories', 'UsersController@mainCategories')-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+// Add product page
+Route::get('add-product', 'UsersController@addProduct');

@@ -32,7 +32,16 @@
                     <strong>Top Products</strong>
                 </div>
                 <div class="card-body">
-
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link text-danger" data-toggle="tab" href="#home">Categories</a>
+                        </li>
+                    </ul>
+                    <div id="mytabContent" class="tab-content">
+                        <div id="home">
+                            <h1 style="padding: 10px;" class="text-center">SELECT CATEGORY</h1>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
