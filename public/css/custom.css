@@ -5,4 +5,10 @@
 .card-cat{
     padding: 0px !important;
 }
-
+.userPgCategories li:hover{
+    background-color: crimson;
+    color: white;
+}
+.userPgCategories li:hover a{
+    color: white !important;
+}
