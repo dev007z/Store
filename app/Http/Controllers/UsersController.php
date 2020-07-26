@@ -81,6 +81,40 @@ class UsersController extends Controller
     }
 
     public function viewProducts(Request $request, $main_category, $id){
-        echo $main_category . '<br/> ' . $id;
+        $categories = DB::table('main_categories')
+                    ->select('main_categories.id', 'main_categories.main_category', 'icons.icons')
+                    ->join('icons', 'icons.id', '=', 'main_categories.id')
+                    ->get();
+        switch ($id) {
+            case '1':
+                # code...
+                echo "All categories";
+                break;
+            case '2':
+                # code...
+                return view('users.postProduct.vehicles', ['categories'=>$categories]);
+                break;
+            case '3':
+                # code...
+                return view('users.postProduct.phones-tablets', ['categories'=>$categories]);
+                break;
+            case '4':
+                # code...
+                return view('users.postProduct.electronics', ['categories'=>$categories]);
+                break;
+            case '5':
+                # code...
+                return view('users.postProduct.real-estate', ['categories'=>$categories]);
+                break;
+            case '6':
+                # code...
+                return view('users.postProduct.services', ['categories'=>$categories]);
+                break;
+
+            default:
+                # code...
+                return view('welcome');
+                break;
+        }
     }
 }

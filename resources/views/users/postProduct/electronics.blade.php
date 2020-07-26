@@ -34,7 +34,7 @@
                 <div class="card-body">
                     <ul class="nav nav-tabs">
                         <li class="nav-item">
-                            <a class="nav-link text-danger" data-toggle="tab" href="#home">Categories</a>
+                            <a class="nav-link text-danger" data-toggle="tab" href="#home">Electronics & Appliances</a>
                         </li>
                     </ul>
                     <div id="mytabContent" class="tab-content">
