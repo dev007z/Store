@@ -24,6 +24,7 @@ class UsersController extends Controller
             $query = $request->get('nigerianStates');
             $data = DB::table('locations')
                     ->where('State_name', 'like', '%' . $query . '%')
+                    ->orderby('State_name')
                     ->get();
             $output = '<ul style="display: block !important; " class="dropdown-menu">';
             if ($data->count()>0) {
@@ -45,6 +46,7 @@ class UsersController extends Controller
             $query = $request->get('id');
             $data = DB::table('cities')
                 ->where('state_id', '=', $query)
+                ->orderby('city_name')
                 ->get();
             $output = '<ul style="display: block !important; " class="dropdown-menu">';
             if ($data->count() > 0) {
@@ -115,6 +117,30 @@ class UsersController extends Controller
                 # code...
                 return view('welcome');
                 break;
+        }
+    }
+
+    public function subCategories(Request $request){
+        if ($request->get('id')) {
+            $query = $request->get('id');
+            $data = DB::table('sub_categoies')
+                ->where('mainCategory_id', '=', $query)
+                ->orderby('sub_category')
+                ->get();
+            $output = '';
+            if ($data->count() > 0) {
+                foreach ($data as $row) {
+                    $output .= '<option>' . $row->sub_category . '</option>';
+                }
+                $output .= '';
+                echo $output;
+            }
+            else{
+                echo "<option>No Record Found</option>";
+            }
+        }
+        else {
+            echo "<option>No Record Found</option>";
         }
     }
 }

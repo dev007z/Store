@@ -176,7 +176,6 @@
             $('#city').val(txt);
             $('#cityList').fadeOut();
         });
-
     });
 
     $(document).ready(function(){

@@ -29,12 +29,12 @@
         <div class="col-md-9">
             <div class="card">
                 <div class="card-header">
-                    <strong>Top Products</strong>
+                    <strong>Adverts</strong>
                 </div>
                 <div class="card-body">
                     <ul class="nav nav-tabs">
                         <li class="nav-item">
-                            <a class="nav-link text-danger" data-toggle="tab" href="#home">Mobile & Tablets</a>
+                            <a class="nav-link text-danger" data-toggle="tab" href="#home">Phones & Tablets</a>
                         </li>
                     </ul>
                     <div id="mytabContent" class="tab-content">
