@@ -40,3 +40,10 @@ Route::get('add-product', 'UsersController@addProduct');
 Route::get('/products/{main_category}/{id}', 'UsersController@viewProducts');
 
 Route::post('UsersController/subCategories', 'UsersController@subCategories')->name('category.subCategories');
+
+// to publish products
+Route::post('/postVehicle', 'UsersController@postVehicle');
+Route::post('/postElectronics', 'UsersController@postElectronics');
+Route::post('/postPhonesTablets', 'UsersController@postPhonesTablets');
+Route::post('/postRealEstate', 'UsersController@postRealEstate');
+Route::post('/postServices', 'UsersController@postServices');

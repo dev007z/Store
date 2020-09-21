@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use DB;
 use App\locations;
 use App\MainCategory;
+use App\SubCategory;
 
 class UsersController extends Controller
 {
@@ -84,33 +85,35 @@ class UsersController extends Controller
 
     public function viewProducts(Request $request, $main_category, $id){
         $categories = DB::table('main_categories')
-                    ->select('main_categories.id', 'main_categories.main_category', 'icons.icons')
-                    ->join('icons', 'icons.id', '=', 'main_categories.id')
-                    ->get();
+            ->select('main_categories.id', 'main_categories.main_category', 'icons.icons')
+            ->join('icons', 'icons.id', '=', 'main_categories.id')
+            ->get();
+        $subcategories = DB::table('main_categories')
+            ->select('*')
+            ->join('sub_categories', 'sub_categories.mainCategory_id', '=', 'main_categories.id')
+            ->where(['main_categories.id'=>$id])
+            ->get();
+        $states = locations::all();
         switch ($id) {
-            case '1':
-                # code...
-                echo "All categories";
-                break;
             case '2':
                 # code...
-                return view('users.postProduct.vehicles', ['categories'=>$categories]);
+                return view('users.postProduct.vehicles', ['categories'=>$categories, 'subcategories'=>$subcategories, 'states'=>$states]);
                 break;
             case '3':
                 # code...
-                return view('users.postProduct.phones-tablets', ['categories'=>$categories]);
+                return view('users.postProduct.phones-tablets', ['categories'=>$categories, 'subcategories'=>$subcategories, 'states'=>$states]);
                 break;
             case '4':
                 # code...
-                return view('users.postProduct.electronics', ['categories'=>$categories]);
+                return view('users.postProduct.electronics', ['categories'=>$categories, 'subcategories'=>$subcategories, 'states'=>$states]);
                 break;
             case '5':
                 # code...
-                return view('users.postProduct.real-estate', ['categories'=>$categories]);
+                return view('users.postProduct.real-estate', ['categories'=>$categories, 'subcategories'=>$subcategories, 'states'=>$states]);
                 break;
             case '6':
                 # code...
-                return view('users.postProduct.services', ['categories'=>$categories]);
+                return view('users.postProduct.services', ['categories'=>$categories, 'subcategories'=>$subcategories, 'states'=>$states]);
                 break;
 
             default:
@@ -120,27 +123,36 @@ class UsersController extends Controller
         }
     }
 
-    public function subCategories(Request $request){
-        if ($request->get('id')) {
-            $query = $request->get('id');
-            $data = DB::table('sub_categoies')
-                ->where('mainCategory_id', '=', $query)
-                ->orderby('sub_category')
-                ->get();
-            $output = '';
-            if ($data->count() > 0) {
-                foreach ($data as $row) {
-                    $output .= '<option>' . $row->sub_category . '</option>';
-                }
-                $output .= '';
-                echo $output;
-            }
-            else{
-                echo "<option>No Record Found</option>";
-            }
-        }
-        else {
-            echo "<option>No Record Found</option>";
-        }
+    public function postVehicle(Request $request){
+        $this->validate($request, [
+            'subCategory_id' => 'required',
+            'product_name' => 'required',
+            'year_of_purchase' => 'required',
+            'condition' => 'required',
+            'price' => 'required',
+            'seller_name' => 'required',
+            'seller_phone' => 'required',
+            'seller_email' => 'required',
+            'state' => 'required',
+            'city' => 'required',
+            'photos' => 'required',
+            'photos.*' => 'image|mimes:png,jpg, jpeg, gif, svg|max:2048|'
+        ]);
+    }
+
+    public function postElectronics(Request $request){
+        echo "Success";
+    }
+
+    public function postPhonesTablets(Request $request){
+        echo "Success";
+    }
+
+    public function postRealEstate(Request $request){
+        echo "Success";
+    }
+
+    public function postServices(Request $request){
+        echo "Success";
     }
 }

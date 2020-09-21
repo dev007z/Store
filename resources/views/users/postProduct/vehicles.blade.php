@@ -4,7 +4,7 @@
 
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-3">
+        <div class="col-sm-4">
             <div class="card">
                 <div class="card-header">
                     <strong>Categories</strong>
@@ -26,7 +26,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-9">
+        <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
                     <strong>Adverts</strong>
@@ -37,11 +37,6 @@
                             <a class="nav-link text-danger" data-toggle="tab" href="#home">Vehicles</a>
                         </li>
                     </ul>
-                    <div id="mytabContent" class="tab-content">
-                        <div id="home">
-
-                        </div>
-                    </div>
 
                     <div id="mytabContent" class="tab-content">
                         <div id="home">
@@ -50,24 +45,41 @@
                                 {{ csrf_field() }}
 
                                 <div class="row">
+                                    <div class="col-lg">
+                                        @if (count($errors)>0)
+                                            <div class="alert alert-warning alert-dismissible"><a class="close" href="#" data-dismiss="alert" aria-label="close">&times;</a>Fill out required fields!</div>
+                                        @endif
+                                    </div>
+                                </div>
+
+                                <div class="row">
                                     <div class="col-lg-6">
                                         <div class="col-lg-12">
                                             <div class="form-group">
                                                 <label><strong>Select Subcategory</strong></label>
-                                                <select class="form-control" name="subCategory_id" required>
+                                                <select class="form-control" name="subCategory_id" >
                                                     <option value="">Select</option>
+                                                    @if (count($subcategories)>0)
+                                                        @foreach ($subcategories as $subcategory)
+                                                            <option value={{$subcategory->id}}>{{$subcategory->sub_category}}</option>Select</option>
+                                                        @endforeach
+
+                                                    @endif
                                                 </select>
                                             </div>
                                         </div>
-                                    </div>
 
                                         <label></label>
+                                        @if ($errors->has('subCategory_id'))
+                                            <div class="alert alert-danger alert-dismissible"><a class="close" href="#" data-dismiss="alert" aria-label="close">&times;</a>{{$errors->first('subCategory_id')}}<i class="fa fa-cancel"></i></div>
+                                        @endif
+                                    </div>
 
                                     <div class="col-lg-6">
                                         <div class="col-lg-12">
                                             <div class="form-group">
                                                 <label><strong>Vehicle Name</strong></label>
-                                                <input type="text" class="form-control" name="product_name" placeholder="Vehicle Name" required>
+                                                <input type="text" class="form-control" name="product_name" placeholder="Vehicle Name" >
                                             </div>
                                         </div>
                                     </div>
@@ -78,7 +90,7 @@
                                         <div class="col-lg-12">
                                             <div class="form-group">
                                                 <label><strong>Year of Purchase</strong></label>
-                                                <input type="text" class="form-control" name="year_of_purchase" placeholder="Year of Purchase" required>
+                                                <input type="text" class="form-control" name="year_of_purchase" placeholder="Year of Purchase" >
                                             </div>
                                         </div>
 
@@ -90,7 +102,7 @@
                                         <div class="col-lg-12">
                                             <div class="form-group">
                                                 <label><strong>Condition</strong></label>
-                                                <select class="form-control" name="condition" required>
+                                                <select class="form-control" name="condition" >
                                                     <option value="new">New</option>
                                                     <option value="used">Used</option>
                                                 </select>
@@ -104,7 +116,7 @@
                                         <div class="col-lg-12">
                                             <div class="form-group">
                                                 <label><strong>Price</strong></label>
-                                                <input type="number" class="form-control" name="price" placeholder="Price" required>
+                                                <input type="number" class="form-control" name="price" placeholder="Price" >
                                             </div>
                                         </div>
 
@@ -116,7 +128,7 @@
                                         <div class="col-lg-12">
                                             <div class="form-group">
                                                 <label><strong>Your Name</strong></label>
-                                                <input type="text" class="form-control" name="seller_name" placeholder="Name" required>
+                                                <input type="text" class="form-control" name="seller_name" placeholder="Name" >
                                             </div>
                                         </div>
                                     </div>
@@ -127,7 +139,7 @@
                                         <div class="col-lg-12">
                                             <div class="form-group">
                                                 <label><strong>Your Phone</strong></label>
-                                                <input type="tel" class="form-control" name="seller_phone" placeholder="Phone Number" required>
+                                                <input type="tel" class="form-control" name="seller_phone" placeholder="Phone Number" >
                                             </div>
                                         </div>
 
@@ -139,7 +151,7 @@
                                         <div class="col-lg-12">
                                             <div class="form-group">
                                                 <label><strong>Your Email</strong></label>
-                                                <input type="email" class="form-control" name="seller_email" placeholder="E-Mail" required>
+                                                <input type="email" class="form-control disable" name="seller_email" placeholder="E-Mail" disabled>
                                             </div>
                                         </div>
                                     </div>
@@ -150,8 +162,14 @@
                                         <div class="col-lg-12">
                                             <div class="form-group">
                                                 <label><strong>State</strong></label>
-                                                <select class="form-control" name="state" required>
+                                                <select class="form-control" name="state" >
                                                     <option value="">Select</option>
+                                                    @if (count($states)>0)
+                                                        @foreach ($states as $state)
+                                                            <option value={{$state->id}}>{{$state->State_name}}</option>Select</option>
+                                                        @endforeach
+
+                                                    @endif
                                                 </select>
 
                                             </div>
@@ -184,7 +202,7 @@
                                     <div class="col-lg-12">
                                         <div class="form-group text-center">
                                             <button type="submit" class="btn btn-lg btn-primary" id="postad">Post Product</button>
-                                            <button class="btn btn-lg btn-default" id="resetbtn">Reset</button>
+                                            <button class="btn btn-lg btn-default" id="resetbtn" type="reset">Reset</button>
                                         </div>
                                     </div>
                                 </div>
